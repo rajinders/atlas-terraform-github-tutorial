@@ -15,6 +15,22 @@ resource "aws_instance" "main" {
 }
 
 #--------------------------------------------------------------
+# Instance 2
+#--------------------------------------------------------------
+resource "aws_instance" "main1" {
+    instance_type = "t2.micro"
+
+    # Trusty windows 2012 R2
+    ami = "ami-cd9339a6"
+
+    # This will create 1 instances
+    count = 1
+
+    subnet_id = "${aws_subnet.main.id}"
+    security_groups = ["${aws_security_group.allow_all.id}"]
+}
+
+#--------------------------------------------------------------
 # Security Group
 #--------------------------------------------------------------
 resource "aws_security_group" "allow_all" {
