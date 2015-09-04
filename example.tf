@@ -24,7 +24,7 @@ resource "aws_instance" "main1" {
     ami = "ami-cd9339a6"
 
     # This will create 1 instances
-    count = 1
+    count = 2
 
     subnet_id = "${aws_subnet.main.id}"
     security_groups = ["${aws_security_group.allow_all.id}"]
